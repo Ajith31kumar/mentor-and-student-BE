@@ -39,18 +39,9 @@ connection.on('close', () => {
 });
 
 app.get('/', (req, res) => res.send(`
-// <div>
-//   <p> In Home Page </p>
-//   <p>To get all mentor List - https://zen-assign-mentors.herokuapp.com/Mentors </p>
-//   <br>
-//   <p>To get all Students List - https://zen-assign-mentors.herokuapp.com/Students </p>
-//   <br>
-//   <p>To get mentor based on ID - https://zen-assign-mentors.herokuapp.com/Mentors/get-mentor/:id</p>
-//   <p>sample - https://zen-assign-mentors.herokuapp.com/Mentors/get-mentor/60e7f515d5ff5342a06652e3 </p>
 
-//   <p> To test Post and update - visit Frontend page of the application - https://preethi-st.github.io/ZEN-Mentors-Frontend/ </p>
-// </div>
-// `));
+
+<h1> Welcome to the Student Mentor API </h1> `));
 
 app.use('/Mentors', mentorRouter);
 app.use('/Students', studentRouter);
