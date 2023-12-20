@@ -9,6 +9,8 @@ app.use(express.json());
 
 const PORT = process.env.PORT || 4100;
 const URL = process.env.DB;
+console.log('DB Connection URL:', process.env.DB);
+
 
 if (!URL) {
   console.error('MongoDB connection URL is not defined');
@@ -17,8 +19,8 @@ if (!URL) {
 
 const mongoose = require('mongoose');
 mongoose.connect(URL, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
+  // useNewUrlParser: true,
+  // useUnifiedTopology: true,
 //   useCreateIndex: true
 });
 
