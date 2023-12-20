@@ -4,13 +4,12 @@ const express = require('express');
 const app = express();
 const dotenv = require('dotenv').config();
 const cors = require('cors');
-app.use(cors());  /* To avoid cross-origin error */
+app.use(cors({ origin: 'https://mentor-and-student-be.onrender.com' }));  /* To avoid cross-origin error */
 app.use(express.json());
 
 const PORT = process.env.PORT || 4100;
 const URL = process.env.DB;
 console.log('DB Connection URL:', process.env.DB);
-
 
 if (!URL) {
   console.error('MongoDB connection URL is not defined');
@@ -19,8 +18,8 @@ if (!URL) {
 
 const mongoose = require('mongoose');
 mongoose.connect(URL, {
-  // useNewUrlParser: true,
-  // useUnifiedTopology: true,
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
 //   useCreateIndex: true
 });
 
@@ -38,10 +37,7 @@ connection.on('close', () => {
   console.log('MongoDB Connection Closed');
 });
 
-app.get('/', (req, res) => res.send(`
-
-
-<h1> Welcome to the Student Mentor API </h1> `));
+app.get('/', (req, res) => res.send(`<h1> Welcome to the Student Mentor API </h1>`));
 
 app.use('/Mentors', mentorRouter);
 app.use('/Students', studentRouter);
