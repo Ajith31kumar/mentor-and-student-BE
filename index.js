@@ -2,15 +2,13 @@ const mentorRouter = require('./Routers/MentorRouter');
 const studentRouter = require('./Routers/StudentRouter');
 const express = require('express');
 const app = express();
-const dotenv = require('dotenv');
-dotenv.config();
+const dotenv = require('dotenv').config();
 const cors = require('cors');
-
 app.use(cors());  /* To avoid cross-origin error */
 app.use(express.json());
 
 const PORT = process.env.PORT || 4100;
-const URL = process.env.MONGODB_URL || 'mongodb://localhost:27017';
+const URL = process.env.DB;
 
 if (!URL) {
   console.error('MongoDB connection URL is not defined');
