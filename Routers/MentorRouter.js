@@ -16,6 +16,7 @@ mentorRouter.get('/', async (req,res) => {
 /* create mentor */
 mentorRouter.post('/',async (req,res) => {
     const {name,email,course} = req.body;
+    console.log(req.body)
     const addMentor = new Mentor({
         "name" : name,
         "email" : email,
@@ -23,6 +24,7 @@ mentorRouter.post('/',async (req,res) => {
     })
     try{
         const newMentor = await addMentor.save();
+        console.log(newMentor);
         res.send(newMentor)
     }catch(err){
         console.log(err);   
