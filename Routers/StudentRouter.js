@@ -48,14 +48,14 @@ studentRouter.post('/',async (req,res) => {
 })
 /*  List of students with no mentors */
 
-studentRouter.get('/nomentors',async (req,res) => {
-    const students = await Student.find({mentor:undefined})
-    res.send(students);
-})
+// studentRouter.get('/nomentors',async (req,res) => {
+//     const students = await Student.find({mentor:undefined})
+//     res.send(students);
+// })
 
 /* Assign or change Mentor for Student -- select one student and assign one mentor */
-
-studentRouter.patch('/assign-mentor/:id',async (req,res) => {
+//https://mentor-and-student-be.onrender.com/Students/assign-mentor65845f93f961be2fac199f1e
+studentRouter.patch('/assign-mentor/:id/',async (req,res) => {
     const {id} = req.params;
     const {mentor} = req.body;
     try{
@@ -75,7 +75,7 @@ studentRouter.patch('/assign-mentor/:id',async (req,res) => {
 
 /* show all students for a particular mentor */
 
-studentRouter.get('/mentor-students/:id',async (req,res) => {
+studentRouter.get('/mentor-students/:id/',async (req,res) => {
     const {id} = req.params;
     try{
         const students = await Student.find({mentor : id});

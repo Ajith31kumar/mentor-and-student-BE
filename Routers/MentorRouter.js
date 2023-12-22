@@ -24,7 +24,7 @@ mentorRouter.post('/',async (req,res) => {
     })
     try{
         const newMentor = await addMentor.save();
-        console.log(newMentor);
+        //  console.log(newMentor);
         res.send(newMentor)
     }catch(err){
         console.log(err);   
