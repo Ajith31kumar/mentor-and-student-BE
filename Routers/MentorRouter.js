@@ -43,5 +43,19 @@ mentorRouter.get('/getmentor/:id',async (req,res) => {
         res.send(err);
     }
 })
+mentorRouter.patch('/assignmentor-students/',async (req,res) => {
+    // const {id} = req.params;
+    const {mentor,studentList} = req.body;
+    console.log(mentor)
+    try{
+        const mentor1= await Mentor.findOneAndUpdate({_id : new mongoose.Types.ObjectId(mentor)},{$set : {students : studentList}})
+        res.send(mentor1);
+    }catch(err){
+        console.log(err);
+        res.status(500);
+        res.send(err);
+    }
+})
+
 
 module.exports = mentorRouter;
